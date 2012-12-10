@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:m="http://java.sun.com/jsf/composite/mnu">
+    <f:view contentType="text/html">
+        <head>
+            <title>ABC Home</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+            <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" /> 
+            <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script> 
+            <script type="text/javascript" src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+        </head>
+        <body>
+            <div data-role="page" id="home">
+                <div data-role="header">
+                    <h1>
+                        ABC Mobile</h1>
+                </div>
+                <div data-role="content">
+                    <div style="text-align: center;">
+                        <h2>
+                            ABC Mobile Procurement</h2>
+                        <img src="img/ABCLogo1.png" width="200" alt="Logo" />
+                    </div>
+                    <p>
+                        Please proceed to Login
+                    </p>
+                </div>
+                <div data-role="footer" data-position="fixed" data-id="nav">
+                    <div data-role="navbar">
+                        <ul>
+                            <m:MobileMenuItem  jsf="H" caption="Home" highlight="yes"/>
+                            <m:MobileMenuItem  jsf="L" caption="Login" />
+                            <m:MobileMenuItem  jsf="M" caption="View"  />
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </f:view>
+</html>

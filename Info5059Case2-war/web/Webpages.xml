@@ -1,0 +1,9 @@
+<webpages>
+    <webpage url="AddVendor.jsf" id="V" />
+    <webpage url="AddProduct.jsf" id="P" />
+    <webpage url="POGenerator.jsf" id="O" />
+    <webpage url="POViewer.jsf" id="R" />
+    <webpage url="MobileHome.jsf" id="H" />
+    <webpage url="MobileLogin.jsf" id="L" />
+    <webpage url="MobileProductViewer.jsf" id="M" />
+</webpages>

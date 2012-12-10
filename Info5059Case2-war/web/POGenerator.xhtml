@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:m="http://java.sun.com/jsf/composite/mnu"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Purchase Orders</title>
+        <link rel="stylesheet" href="css/reset.css"/>
+        <link rel="stylesheet" href="css/960.css"/>
+        <link rel="stylesheet" href="css/common.css"/>
+        <link rel="stylesheet" href="css/ap.css"/>
+        <link rel="stylesheet" href="css/fancy-button.css"/>
+        <link rel="stylesheet" href="css/styles.css"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <h1><a href="/">AP/PO V2.0</a></h1>
+                <h2>Purchase Orders</h2>
+                <div class="clear"></div>
+            </div>
+            <div id="nav">
+                <ul>
+                    <m:MenuItem jsf="V" caption="Vendors"  />
+                    <m:MenuItem jsf="P" caption="Products" />
+                    <m:MenuItem jsf="O" caption="Purchase Orders" highlight="yes"/>
+                    <m:MenuItem jsf="R" caption="View Orders" />
+                </ul>
+            </div><!-- end nav -->
+            
+            <div id="body">
+		<div id="content">
+                        <h2>Add Purchase Order</h2>
+                        
+                        <h:form>
+                            <div class="container_12">
+                                <div class="grid_12" style="width:765px"><hr/></div>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <div class="grid_1">Vendor No:</div> 
+                                <div class="grid_2">
+                                    <h:selectOneMenu id="vendorno" value="#{poGeneratorBean.vendorno}">
+                                        <f:selectItems value="#{vendorBean.vendornos}" />
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="grid_9">
+                                    <h:commandButton class="fancy-button" value="Select Vendor" action="#{poGeneratorBean.changeVendor()}"/>
+                                </div>
+                                
+
+                                <div class="grid_12"><br/></div>
+                                <div class="grid_12"><br/></div>
+                                
+                                <div class="grid_12" style="width:765px"><hr/></div>
+                                <br/>
+                                <br/>
+                                <br/>
+                                
+                                <div class="grid_12"><br/></div>
+                                <div class="grid_12"><br/></div>
+                                
+                                <ui:fragment rendered="#{poGeneratorBean.vendor.name != null}">
+                                    <div class="grid_1" style="font-weight:bold;text-align: left;">Name:</div>
+                                    <div class="grid_2" style="font-weight:normal;text-align: left;">
+                                        <h:outputText value="#{poGeneratorBean.vendor.name}" />
+                                    </div>
+                                    <div class="grid_1" style="font-weight:bold;text-align: left;">Address:</div>
+                                    <div class="grid_2" style="font-weight:normal;text-align: left;">
+                                        <h:outputText value="#{poGeneratorBean.vendor.address}" />
+                                    </div>
+                                    <div class="grid_1" style="font-weight:bold;text-align: left;">City:</div>
+                                    <div class="grid_2" style="font-weight:normal;text-align: left;">
+                                        <h:outputText value="#{poGeneratorBean.vendor.city}" />
+                                    </div>
+                                    
+                                    <div class="grid_3"><br/></div>
+                                    <div class="grid_12"><br/></div>
+                                    
+                                    <div class="grid_1" style="font-weight:bold;text-align: left;">Province:</div>
+                                    <div class="grid_2" style="font-weight:normal;text-align: left;">
+                                        <h:outputText value="#{poGeneratorBean.vendor.province}" />
+                                    </div>
+                                    <div class="grid_1" style="font-weight:bold;text-align: left;">Postal:</div>
+                                    <div class="grid_2" style="font-weight:normal;text-align: left;">
+                                        <h:outputText value="#{poGeneratorBean.vendor.postalCode}" />
+                                    </div>
+                                    <div class="grid_1" style="font-weight:bold;text-align: left;">Phone:</div>
+                                    <div class="grid_2" style="font-weight:normal;text-align: left;">
+                                        <h:outputText value="#{poGeneratorBean.vendor.phone}" />
+                                    </div>
+                                    
+                                    <div class="grid_3"><br/></div>
+                                    <div class="grid_12"><br/></div>
+                                
+                                    <div class="grid_1" style="font-weight:bold;text-align: left;">Email:</div>
+                                    <div class="grid_2" style="font-weight:normal;text-align: left;">
+                                        <h:outputText value="#{poGeneratorBean.vendor.email}" />
+                                    </div>
+                                    <div class="grid_1" style="font-weight:bold;text-align: left;">Type</div>
+                                    <div class="grid_2" style="font-weight:normal;text-align: left;">
+                                        <h:outputText value="#{poGeneratorBean.vendor.type}" />
+                                    </div>
+
+                                    <div class="grid_6"><br/></div>
+                                    <div class="grid_12"><br/></div>
+                                    
+                                    <div class="grid_12" style="width:765px"><hr/></div>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    
+                                    <div class="grid_12"><br/></div>
+                                    
+                                    <div class="grid_1">Product:</div> 
+                                    <div class="grid_2">
+                                        <h:selectOneMenu id="prodcd" value="#{poGeneratorBean.prodcd}">
+                                            <f:selectItems value="#{poGeneratorBean.vendor.productcodes}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <div class="grid_1">Qty:</div> 
+                                    <div class="grid_2">
+                                        <h:inputText id="qty" value="#{poGeneratorBean.qty}"/>
+                                    </div>
+                                    <div class="grid_6">
+                                        <h:commandButton class="fancy-button" value="Add Item" action="#{poGeneratorBean.addItemEJB()}"/>
+                                    </div>
+                                    
+                                    <div class="grid_12"><br/></div>
+                                    
+                                    
+                                    <div class="grid_2">Prodcd</div> 
+                                    <div class="grid_2">Prodname</div>
+                                    <div class="grid_2">Qty</div>
+                                    <div class="grid_2">Cost</div>
+                                    <div class="grid_4">Ext</div>
+                                    
+                                    <div class="grid_12" style="width:765px"><hr/></div>
+                                    <div class="grid_12"><br/></div>
+                                   
+                                    <ui:repeat value="#{poGeneratorBean.items}" var="item">
+                                        <ui:fragment rendered="#{item.qty > 0}">
+                                            <div class="grid_2">
+                                                <font size="2"><h:outputText value="#{item.prodcd}" /></font>
+                                            </div>
+                                            <div class="grid_2">
+                                                <font size="2"><h:outputText value="#{item.prodname}" /></font>
+                                            </div>
+                                            <div class="grid_2">
+                                                <font size="2"><h:outputText value="#{item.qty}" /></font>
+                                            </div>
+                                            <div class="grid_2">
+                                                <h:outputText value="#{item.price}" >
+                                                    <f:convertNumber maxFractionDigits="2" groupingUsed ="true"
+                                                                     currencySymbol="$" maxIntegerDigits="7" type="currency" />
+                                                </h:outputText>
+                                            </div>
+                                            <div class="grid_4">
+                                                <h:outputText value="#{item.ext}" >
+                                                    <f:convertNumber maxFractionDigits="2" groupingUsed ="true"
+                                                                     currencySymbol="$" maxIntegerDigits="7" type="currency" />
+                                                </h:outputText>
+                                            </div>
+                                        </ui:fragment>
+                                    </ui:repeat>
+                                    
+                                    <div class="grid_12" style="width:765px"><hr/></div>
+                                    <div class="grid_12"><br/></div>
+                                    
+                                    <div align="right" class="grid_4">
+                                        <div class="grid_1">
+                                            <font size="2"><h:outputText value="Sub:" /></font>
+                                        </div>
+                                        <div class="grid_2">
+                                            <h:outputText value="#{poGeneratorBean.sub}" >
+                                                <f:convertNumber maxFractionDigits="2" groupingUsed ="true"
+                                                                 currencySymbol="$" maxIntegerDigits="7" type="currency" />
+                                            </h:outputText>
+                                        </div>
+                                        <div class="grid_1">
+                                            <font size="2"><h:outputText value="Tax:" /></font>
+                                        </div>
+                                        <div class="grid_2">
+                                            <h:outputText value="#{poGeneratorBean.tax}" >
+                                                <f:convertNumber maxFractionDigits="2" groupingUsed ="true"
+                                                                 currencySymbol="$" maxIntegerDigits="7" type="currency" />
+                                            </h:outputText>
+                                        </div>
+                                        <div class="grid_1">
+                                            <font size="2"><h:outputText value="Total:" /></font>
+                                        </div>
+                                        <div class="grid_2">
+                                            <h:outputText value="#{poGeneratorBean.total}" >
+                                                <f:convertNumber maxFractionDigits="2" groupingUsed ="true"
+                                                                 currencySymbol="$" maxIntegerDigits="7" type="currency" />
+                                            </h:outputText>
+                                        </div>
+                                    </div>
+                                <div class="grid_3">
+                                    <h:commandButton class="fancy-button" value="Add PO" action="#{poGeneratorBean.poAddEJB()}"/>
+                                </div>
+                                    
+                                <div class="grid_12" style="width:765px"><hr/></div>
+                                <div class="grid_12"><br/></div>
+                                    
+                                <div align="center" class="grid_10">
+                                    <h:outputText value="#{poGeneratorBean.message}" id ="msg"/>
+                                </div>
+                                </ui:fragment>
+                            </div>
+                        </h:form>
+                </div>
+                
+                <div class="grid_12"><br/></div>
+                <div class="grid_12"><br/></div>
+                
+		<div class="clear"></div>
+                </div>
+            
+                <div id="footer">
+                    <div>
+                        <div>
+                            <div class="container_12 clearfix">
+                                <section class="footersub grid_6">
+                                    <h1>ABC address</h1>
+                                    <p>12345 Somewhere Street, Someplace, Somearea</p>
+                                </section>
+                                <section class="footersub grid_6">
+                                    <h1>Call ABC</h1>
+                                    <p>Phone: (555) 555-5555</p>
+                                    <p>customerhelp@abc.com</p>
+                                </section>
+                            </div>
+                        </div><!--fsubwrap1-->
+                        <div>
+                            <section id="copyright-info">
+                                <small>@2012 Info5059</small>
+                            </section>
+                        </div><!--fsubwrap2-->
+                    </div><!--footerwrap-->
+                </div>
+            
+        </div><!-- end container -->
+    </h:body>
+</html>
+

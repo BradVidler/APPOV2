@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:m="http://java.sun.com/jsf/composite/mnu"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Add Product</title>
+        <link rel="stylesheet" href="css/reset.css"/>
+        <link rel="stylesheet" href="css/960.css"/>
+        <link rel="stylesheet" href="css/common.css"/>
+        <link rel="stylesheet" href="css/ap.css"/>
+        <link rel="stylesheet" href="css/fancy-button.css"/>
+        <link rel="stylesheet" href="css/styles.css"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <h1><a href="/">AP/PO V2.0</a></h1>
+                <h2>Add Product</h2>
+                <div class="clear"></div>
+            </div>
+            <div id="nav">
+                <ul>
+                    <m:MenuItem jsf="V" caption="Vendors"  />
+                    <m:MenuItem jsf="P" caption="Products" highlight="yes" />
+                    <m:MenuItem jsf="O" caption="Purchase Orders" />
+                    <m:MenuItem jsf="R" caption="View Orders" />
+                </ul>
+            </div><!-- end nav -->
+            
+            <div id="body">
+		<div id="content">
+                    <h2>Add Product</h2>
+                        
+                    <h:form>
+                        <div class="container_12">
+                            <div class="grid_12" style="width:765px"><hr/></div>
+                            <div class="grid_12"><br/></div>
+
+                                <div class="grid_1">Vendor No:</div> 
+                                <div class="grid_11">
+                                    <h:selectOneMenu id="vendorno" value="#{productBean.vendorno}">
+                                        <f:selectItems value="#{vendorBean.vendornos}" />
+                                    </h:selectOneMenu>
+                                </div>
+                                
+                                <div class="grid_12" style="width:765px"><hr/></div>
+                                <div class="grid_12"><br/></div>
+                                
+                                <div class="grid_1">Prodcd:</div> 
+                                <div class="grid_5"><h:inputText id="prodcd" value="#{productBean.prodcd}" required="true" size="10"/></div>
+                                <div class="grid_1">VenSKU:</div> 
+                                <div class="grid_5"><h:inputText id="vendorsku" value="#{productBean.vendorsku}" required="true" size="10"/></div>
+                                <div class="grid_1">ProdNam:</div> 
+                                <div class="grid_5"><h:inputText id="prodname" value="#{productBean.prodname}" required="true" size="10"/></div>
+                                <div class="grid_1">Cost:</div> 
+                                <div class="grid_5"><h:inputText id="costprice" value="#{productBean.costprice}" required="true" size="10"/></div>
+                                <div class="grid_1">MSRP:</div> 
+                                <div class="grid_5"><h:inputText id="msrp" value="#{productBean.msrp}" required="true" size="10"/></div>
+                                <div class="grid_1">ROP:</div> 
+                                <div class="grid_5"><h:inputText id="rop" value="#{productBean.rop}" required="true" size="10"/></div>
+                                <div class="grid_1">EOQ:</div> 
+                                <div class="grid_5"><h:inputText id="eoq" value="#{productBean.eoq}" required="true" size="10"/></div>
+                                <div class="grid_1">QOH</div> 
+                                <div class="grid_5"><h:inputText id="qoh" value="#{productBean.qoh}" required="true" size="10"/></div>
+                                <div class="grid_1">QOO:</div> 
+                                <div class="grid_5"><h:inputText id="qoo" value="#{productBean.qoo}" required="true" size="10"/></div>
+                                <div class="grid_1">QR Code:</div> 
+                                <div class="grid_5"><h:inputText id="qrcodestring" value="#{productBean.qrcodestring}" required="true" size="10"/></div>
+                                
+                                <div class="grid_6"><br/></div>
+                                <div class="grid_12" style="width:765px"><hr/></div>
+                                <div class="grid_6"><br/></div>
+                                
+                                <div class="grid_3">
+                                    <h:commandButton class="fancy-button" value="Add Product" action="#{productBean.addProductEJB()}">
+                                        <f:ajax render="id1" execute="@form"/>
+                                    </h:commandButton>
+                                </div>
+                                
+                                <div class="grid_12"><br/></div>
+                                
+                                
+                            </div>
+                        <div class="grid_3">
+                            <h:outputText id="id1" value="#{productBean.message}"/>
+                        </div>
+                    </h:form>
+                </div>
+                
+                <div class="grid_12"><br/></div>
+                <div class="grid_12"><br/></div>
+                
+		<div class="clear"></div>
+                </div>
+            
+                <div id="footer">
+                    <div>
+                        <div>
+                            <div class="container_12 clearfix">
+                                <section class="footersub grid_6">
+                                    <h1>ABC address</h1>
+                                    <p>12345 Somewhere Street, Someplace, Somearea</p>
+                                </section>
+                                <section class="footersub grid_6">
+                                    <h1>Call ABC</h1>
+                                    <p>Phone: (555) 555-5555</p>
+                                    <p>customerhelp@abc.com</p>
+                                </section>
+                            </div>
+                        </div><!--fsubwrap1-->
+                        <div>
+                            <section id="copyright-info">
+                                <small>@2012 Info5059</small>
+                            </section>
+                        </div><!--fsubwrap2-->
+                    </div><!--footerwrap-->
+                </div>
+            
+        </div><!-- end container -->
+    </h:body>
+</html>
+

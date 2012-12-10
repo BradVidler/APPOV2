@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:m="http://java.sun.com/jsf/composite/mnu"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Purchase Orders</title>
+        <link rel="stylesheet" href="css/reset.css"/>
+        <link rel="stylesheet" href="css/960.css"/>
+        <link rel="stylesheet" href="css/common.css"/>
+        <link rel="stylesheet" href="css/ap.css"/>
+        <link rel="stylesheet" href="css/fancy-button.css"/>
+        <link rel="stylesheet" href="css/styles.css"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <h1><a href="/">AP/PO V2.0</a></h1>
+                <h2>View Orders</h2>
+                <div class="clear"></div>
+            </div>
+            <div id="nav">
+                <ul>
+                    <m:MenuItem jsf="V" caption="Vendors"  />
+                    <m:MenuItem jsf="P" caption="Products" />
+                    <m:MenuItem jsf="O" caption="Purchase Orders" />
+                    <m:MenuItem jsf="R" caption="View Orders" highlight="yes" />
+                </ul>
+            </div><!-- end nav -->
+            
+            <div id="body">
+		<div id="content">
+                        <h2>View Purchase Order</h2>
+                        
+                        <h:form>
+                            <div class="container_12">
+                                <div class="grid_12" style="width:765px"><hr/></div>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <div class="grid_1">Vendor No:</div> 
+                                <div class="grid_2">
+                                    <h:selectOneMenu id="vendorno" value="#{poViewerBean.vendor.vendorNo}">
+                                        <f:selectItems value="#{vendorBean.vendornos}" />
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="grid_9">
+                                    <h:commandButton class="fancy-button" value="Select Vendor" action="#{poViewerBean.changeVendor()}"/>
+                                </div>
+                                
+
+                                <div class="grid_12"><br/></div>
+                                <div class="grid_12"><br/></div>
+                                
+                                <div class="grid_12" style="width:765px"><hr/></div>
+                                
+                                <div class="grid_12"><br/></div>
+                                <div class="grid_12"><br/></div>
+                                
+                                <ui:fragment rendered="#{poViewerBean.vendor.name != null}">
+                                    <div class="grid_1">PO No:</div> 
+                                    <div class="grid_2">
+                                        <h:selectOneMenu id="pono" value="#{poViewerBean.pono}">
+                                            <f:selectItems value="#{vendorBean.ordernos}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <div class="grid_9">
+                                        <h:commandButton class="fancy-button" value="Select PO" action="#{poViewerBean.cmdPickPO_action()}"/>
+                                    </div>
+
+
+                                    <div class="grid_12"><br/></div>
+                                    <div class="grid_12"><br/></div>
+
+                                    <div class="grid_12" style="width:765px"><hr/></div>
+                                    
+                                    <div class="grid_12"><br/></div>
+                                    <div class="grid_12"><br/></div>
+                                    
+                                    <!-- XML RESULT OUTPUT -->
+                                    <ui:fragment rendered="#{poViewerBean.pono > 0}" id ="poinfo">
+                                        <h:outputFormat escape="false" value="#{poViewerBean.potext}"/>
+                                    </ui:fragment>
+                                    
+                                    <div align="center" class="grid_10">
+                                        <h:outputText value="#{poGeneratorBean.message}" id ="msg"/>
+                                    </div>
+                                </ui:fragment>
+                            </div>
+                        </h:form>
+                </div>
+                
+                <div class="grid_12"><br/></div>
+                <div class="grid_12"><br/></div>
+                
+		<div class="clear"></div>
+                </div>
+            
+                <div id="footer">
+                    <div>
+                        <div>
+                            <div class="container_12 clearfix">
+                                <section class="footersub grid_6">
+                                    <h1>ABC address</h1>
+                                    <p>12345 Somewhere Street, Someplace, Somearea</p>
+                                </section>
+                                <section class="footersub grid_6">
+                                    <h1>Call ABC</h1>
+                                    <p>Phone: (555) 555-5555</p>
+                                    <p>customerhelp@abc.com</p>
+                                </section>
+                            </div>
+                        </div><!--fsubwrap1-->
+                        <div>
+                            <section id="copyright-info">
+                                <small>@2012 Info5059</small>
+                            </section>
+                        </div><!--fsubwrap2-->
+                    </div><!--footerwrap-->
+                </div>
+            
+        </div><!-- end container -->
+    </h:body>
+</html>
+

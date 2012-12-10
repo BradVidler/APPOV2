@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:m="http://java.sun.com/jsf/composite/mnu"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Add Vendor</title>
+        <link rel="stylesheet" href="css/reset.css"/>
+        <link rel="stylesheet" href="css/960.css"/>
+        <link rel="stylesheet" href="css/common.css"/>
+        <link rel="stylesheet" href="css/ap.css"/>
+        <link rel="stylesheet" href="css/fancy-button.css"/>
+        <link rel="stylesheet" href="css/styles.css"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <h1><a href="/">AP/PO V2.0</a></h1>
+                <h2>Add Vendor</h2>
+                <div class="clear"></div>
+            </div>
+            <div id="nav">
+                <ul>
+                    <m:MenuItem jsf="V" caption="Vendors" highlight="yes" />
+                    <m:MenuItem jsf="P" caption="Products" />
+                    <m:MenuItem jsf="O" caption="Purchase Orders" />
+                    <m:MenuItem jsf="R" caption="View Orders" />
+                </ul>
+            </div><!-- end nav -->
+            
+            <div id="body">
+		<div id="content">
+                        <h2>Add Vendor</h2>
+                        
+                        <h:form>
+                            <div class="container_12">
+                                <div class="grid_12" style="width:765px"><hr/></div>
+                                <div class="grid_12"><br/></div>
+                                <div class="grid_12"><br/></div>
+                
+                                <div class="grid_1">Name:</div> 
+                                <div class="grid_5"><h:inputText id="name" value="#{vendorBean.name}" required="true" size="20"/></div>
+                                <div class="grid_1">Email:</div> 
+                                <div class="grid_5"><h:inputText id="email" value="#{vendorBean.email}" required="true" size="20"/></div>
+                                <div class="grid_1">Address:</div> 
+                                <div class="grid_5"><h:inputText id="address" value="#{vendorBean.address}" required="true" size="20"/></div>
+                                <div class="grid_1">City:</div> 
+                                <div class="grid_5"><h:inputText id="city" value="#{vendorBean.city}" required="true" size="20"/></div>
+                                <div class="grid_1">Phone:</div> 
+                                <div class="grid_5"><h:inputText id="phone" value="#{vendorBean.phone}" required="true" size="20"/></div>
+                                <div class="grid_1">Postal:</div> 
+                                <div class="grid_5"><h:inputText id="postal" value="#{vendorBean.postalCode}" required="true" size="20"/></div>
+                                <div class="grid_1">Province:</div> 
+                                <div class="grid_5">
+                                    <h:selectOneMenu id="province" required =" true" value="#{vendorBean.province}">
+                                        <f:selectItem itemValue="Ontario" itemLabel="Ontario" />
+                                        <f:selectItem itemValue="Alberta" itemLabel="Alberta" />
+                                        <f:selectItem itemValue="Quebec" itemLabel="Quebec" />
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="grid_1">Type:</div> 
+                                <div class="grid_5">
+                                    <h:selectOneMenu id="type" required =" true" value="#{vendorBean.type}">
+                                        <f:selectItem itemValue="Trusted" itemLabel="Trusted" />
+                                        <f:selectItem itemValue="Unknown" itemLabel="Unkown" />
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="grid_12"><br/></div>
+                                <div class="grid_12"><br/></div>
+                                <div class="grid_6 push_1">
+                                    <h:commandButton class="fancy-button" value="Add Vendor" action="#{vendorBean.addVendorEJB}">
+                                        <f:ajax render="id1" execute="@form"/>
+                                    </h:commandButton>
+                                </div>
+                                <div class="grid_12"><br/></div>
+                                <div class="grid_12"><br/></div>
+                                <h:outputText value="#{vendorBean.message}" id ="id1"/>
+                            </div>
+                        </h:form>
+                </div>
+                
+                <div class="grid_12"><br/></div>
+                <div class="grid_12"><br/></div>
+                
+		<div class="clear"></div>
+                </div>
+            
+                <div id="footer">
+                    <div>
+                        <div>
+                            <div class="container_12 clearfix">
+                                <section class="footersub grid_6">
+                                    <h1>ABC address</h1>
+                                    <p>12345 Somewhere Street, Someplace, Somearea</p>
+                                </section>
+                                <section class="footersub grid_6">
+                                    <h1>Call ABC</h1>
+                                    <p>Phone: (555) 555-5555</p>
+                                    <p>customerhelp@abc.com</p>
+                                </section>
+                            </div>
+                        </div><!--fsubwrap1-->
+                        <div>
+                            <section id="copyright-info">
+                                <small>@2012 Info5059</small>
+                            </section>
+                        </div><!--fsubwrap2-->
+                    </div><!--footerwrap-->
+                </div>
+            
+        </div><!-- end container -->
+    </h:body>
+</html>
+

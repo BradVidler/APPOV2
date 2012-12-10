@@ -1,0 +1,33 @@
+/* accounts payable pages styling */     
+#contents {
+    text-align:center;
+    background-color:lightskyblue;
+    color: black;
+    height: 550px;
+    width: 325px;
+    border: 5px solid black;
+    padding: 10px;
+    font:14px/1.5 Tahoma, Geneva, sans-serif;font-weight:normal;
+    webkit-border-radius: 22px;
+    -moz-border-radius: 22px;
+    -ms-border-radius: 22px;
+    -o-border-radius: 22px;
+    border-radius: 22px;  
+    z-index:10;          
+}
+
+#aphead {font-weight:bold;
+         font:20px/1.5 Tahoma, Geneva, sans-serif;font-weight:bold;
+}
+
+#aphd2{
+    font:16px/1.5 Tahoma, Geneva, sans-serif;font-weight:bold;text-align:center;
+}
+
+#apbody{
+    text-align:left;
+}
+
+#apmsg{
+    font:16px/1.5 Tahoma, Geneva, sans-serif;font-weight:bold;text-align:center;color:teal;
+}

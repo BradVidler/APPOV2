@@ -1,0 +1,29 @@
+  
+.fancy-button {
+	padding:10px 15px 20px 0px 20px;
+	text-transform:uppercase;	
+	font:18px/1.5 Tahoma, Geneva, sans-serif;
+	font-weight:bold;
+	display:block;
+	color:black;
+	align:center;
+	
+	/*background gradients */
+	background:#cfcfcf;
+	background:-webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(207,207,207)), color-stop(1, rgb(255,255,255)));
+	background:-moz-linear-gradient(center bottom, rgb(207,207,207) 0%, rgb(255,255,255) 100%);
+	
+	/* border radius */
+	-webkit-border-radius: 0.8em;
+	-moz-border-radius: 0.8em;
+	border-radius: 10px;
+	border:1px solid #fff;
+
+	/* text shadow */
+	text-shadow: 1px 1px 0px #fff;
+	
+	/* box shadow*/
+	-moz-box-shadow: 0 1px 3px #333;
+	-webkit-box-shadow: 0 1px 3px #333;
+	box-shadow: 0 1px 3px #333;	
+}

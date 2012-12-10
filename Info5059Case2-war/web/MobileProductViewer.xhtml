@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:m="http://java.sun.com/jsf/composite/mnu"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:view contentType="text/html">
+        <head>
+            <title>ABC Home</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+            <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" /> 
+            <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script> 
+            <script type="text/javascript" src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+        </head>
+        <body>
+            <div data-role="page" id="home">
+                <div data-role="header">
+                    <h1>
+                        ABC Mobile</h1>
+                </div>
+                
+                <h:form>
+                <div data-role="content">
+                    <div data-role="fieldcontain">
+                        <label for="message">
+                            <h:outputText value="#{productViewerBean.message}" />
+                        </label>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <h:commandButton action="#{productViewerBean.changeVendor}" value="Pick Vendor" />
+                        </div>
+                        <div class="ui-block-b" id="ven" style="padding-top:6px;">
+                            <h:selectOneMenu value="#{productViewerBean.vendor.vendorNo}" id="vendorno">
+                                <f:selectItems value="#{vendorBean.vendornos}" id="vendornos" />
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
+                    <ui:fragment rendered="#{productViewerBean.vendor.vendorNo > 0}">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a">
+                                <h:commandButton action="#{productViewerBean.getProductEJB}" value="Pick Product" />
+                            </div>
+                            <div class="ui-block-b" id="prod" style="padding-top:6px;">
+                                <h:selectOneMenu value="#{productViewerBean.prodcd}" id="prodcd">
+                                    <f:selectItems value="#{productViewerBean.vendor.productcodes}" id="prodcodes" />
+                                </h:selectOneMenu>
+                            </div>
+                        </div>
+                        <ui:fragment rendered="#{productViewerBean.prodcd != null}" >
+                            <div data-role="collapsible" data-collapsed="true">
+                                <h3>Information</h3>
+                                <div class="ui-grid-a">
+                                    <div class="ui-block-a">
+                                        Prodcd:
+                                    </div>
+                                    <div class="ui-block-b">
+                                        <h:outputLabel value="#{productViewerBean.prodcd}" />
+                                    </div>
+                                    <div class="ui-block-a">
+                                        Name:
+                                    </div>
+                                    <div class="ui-block-b">
+                                        <h:outputLabel value="#{productViewerBean.product.prodname}" />
+                                    </div>
+                                    <div class="ui-block-a">
+                                        Vendor SKU:
+                                    </div>
+                                    <div class="ui-block-b">
+                                        <h:outputLabel value="#{productViewerBean.product.vendorsku}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-role="collapsible" data-collapsed="true">
+                                <h3>Pricing</h3>
+                                <div class="ui-grid-a">
+                                    <div class="ui-block-a">
+                                        MSRP:
+                                    </div>
+                                    <div class="ui-block-b">
+                                        <h:outputLabel value="#{productViewerBean.product.msrp}" />
+                                    </div>
+                                    <div class="ui-block-a">
+                                        Cost:
+                                    </div>
+                                    <div class="ui-block-b">
+                                        <h:outputLabel value="#{productViewerBean.product.costprice}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-role="collapsible" data-collapsed="true">
+                                <h3>QR Code</h3>
+                                <h:graphicImage value="/QRCode?qrc=#{productViewerBean.prodcd}" />
+                                <!-- <h:graphicImage value="#{productViewerBean.product.qrcode}" /> -->
+                            </div>
+                            <div data-role="collapsible" data-collapsed="true">
+                                <h3>Inventory</h3>
+                                <div class="ui-grid-a">
+                                    <div class="ui-block-a">
+                                        QOH:
+                                    </div>
+                                    <div class="ui-block-b">
+                                        <h:outputLabel value="#{productViewerBean.product.qoh}" />
+                                    </div>
+                                    <div class="ui-block-a">
+                                        QOO:
+                                    </div>
+                                    <div class="ui-block-b">
+                                        <h:outputLabel value="#{productViewerBean.product.qoo}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </ui:fragment>
+                    </ui:fragment>
+                </div>
+                
+                    
+                    
+                </h:form>
+                <div data-role="footer" data-position="fixed" data-id="nav">
+                    <div data-role="navbar">
+                        <ul>
+                            <m:MobileMenuItem  jsf="H" caption="Home" />
+                            <m:MobileMenuItem  jsf="L" caption="Login" />
+                            <m:MobileMenuItem  jsf="M" caption="View" highlight="yes" />
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </f:view>
+</html>
